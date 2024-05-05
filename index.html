@@ -12,6 +12,7 @@
     <h1>QR Scanner</h1>
     <div id="reader" width="600px"></div>
     <h2 id="result"></h2>
+    <button>Switch Camera</button>
     <script>
         const result = document.getElementById('result')
         //         function onScanSuccess(decodedText, decodedResult) {
@@ -44,8 +45,30 @@
         };
         const config = { fps: 10, qrbox: { width: 500, height: 500 } };
 
+        // Variable for switching camera
+        let facingMode = 'environment';
+
         // If you want to prefer front camera
-        html5QrCode.start({ facingMode: "user" }, config, qrCodeSuccessCallback);
+        html5QrCode.start({ facingMode: facingMode }, config, qrCodeSuccessCallback);
+
+        document.querySelector("button").addEventListener("click", () => {
+            if (facingMode === 'environment') {
+                facingMode = 'user';
+                switchCamera()
+            } else {
+                facingMode = 'environment';
+                switchCamera()
+            }
+            console.log(facingMode)
+        })
+
+        function switchCamera() {
+            html5QrCode.stop().then((ignore) => {
+                    html5QrCode.start({ facingMode: facingMode }, config, qrCodeSuccessCallback);
+            }).catch((err) => {
+                // Stop failed, handle it.
+            });
+        }
     </script>
 </body>
 
