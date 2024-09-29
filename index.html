@@ -5,14 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
-    <title>QR Scanner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Fast QR Scanner By fjribptra</title>
 </head>
 
 <body>
-    <h1>QR Scanner</h1>
-    <div id="reader" width="600px"></div>
-    <h2 id="result"></h2>
-    <button>Switch Camera</button>
+    <div class="flex gap-3 justify-center items-center p-5 bg-blue-500 text-white">
+        <i class="fa-solid fa-bolt"></i>
+        <h1 class="text-center font-semibold">Fast QR Scanner</h1>
+    </div>
+    <div  class="md:flex ">
+        <div id="reader" class="w-full md:w-[1000px]"></div>
+        <h2 id="result" class="text-center font-bold text-3xl py-5"></h2>
+        <button class="bg-yellow-500 p-5 w-full font-bold">
+            <i class="fa-solid fa-camera-rotate"></i>
+            Switch Camera
+        </button>
+    </div>
+    <footer class="p-5">
+        <p class="text-center text-slate-500">&copy; 2024 By <a class="text-blue-500" href="https://fjribptra.github.io">fjribptra</a></p>
+    </footer>
     <script>
         const result = document.getElementById('result')
         //         function onScanSuccess(decodedText, decodedResult) {
